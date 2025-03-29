@@ -1,0 +1,56 @@
+name: Fix BibTeX Bibliography
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_file:
+        description: 'Path to the input .bib file (relative to repository root)'
+        required: true
+        default: 'bibliography.bib'
+      output_file:
+        description: 'Path for the output .bib file'
+        required: true
+        default: 'fixed_bibliography.bib'
+      remove_fields:
+        description: 'Fields to remove (space separated)'
+        required: false
+        default: 'organization abstract keywords'
+      similarity_threshold:
+        description: 'Similarity threshold (0.0-1.0)'
+        required: false
+        default: '0.75'
+
+jobs:
+  fix-bibliography:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install bibtexparser requests
+      
+      - name: Verify input file exists
+        run: |
+          if [ ! -f "${{ github.event.inputs.input_file }}" ]; then
+            echo "Error: Input file ${{ github.event.inputs.input_file }} does not exist"
+            exit 1
+          fi
+      
+      - name: Run BibTeX DOI Fixer
+        run: |
+          python fix_bibliography.py "${{ github.event.inputs.input_file }}" "${{ github.event.inputs.output_file }}" --remove ${{ github.event.inputs.remove_fields }} --threshold ${{ github.event.inputs.similarity_threshold }}
+      
+      - name: Upload fixed bibliography
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-bibliography
+          path: ${{ github.event.inputs.output_file }}
