@@ -54,7 +54,7 @@ python fix_bibliography.py input.bib output.bib
 
 Specify which fields to remove:
 ```bash
-python fix_bibliography.py input.bib output.bib --remove organization abstract keywords url
+python fix_bibliography.py input.bib output.bib --remove organization abstract keywords url publisher
 ```
 
 Adjust the similarity threshold for DOI matching:
