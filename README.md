@@ -1,3 +1,4 @@
+
 # BibTeX Bibliography DOI Fixer
 
 A Python utility to enhance BibTeX bibliography files exported from Google Scholar by adding missing DOI fields, removing redundant information, and standardizing entry formats.
@@ -20,6 +21,10 @@ This script resolves these issues by:
 - ✅ **Title Standardization**: Updates entry titles to match the canonical versions from Crossref
 - ✅ **Title Case Preservation**: Ensures proper capitalization in LaTeX output
 - ✅ **DOI Conflict Resolution**: Warns about and intelligently resolves DOI conflicts
+
+
+## Run on colab
+https://colab.research.google.com/drive/1UaIh96xLRa1Oe1pIdOAVAHslTyHgcRIJ?usp=sharing
 
 ## Requirements
 
