@@ -1,6 +1,6 @@
 # BibTeX Bibliography DOI Fixer
 
-A Python utility to enhance BibTeX bibliography files exported from Google Scholar by adding missing DOI fields, updating metadata fields from Crossref, removing redundant information, and standardizing entry formats.
+A Python utility to enhance BibTeX bibliography files exported from Google Scholar, etc., by adding missing DOI fields, updating metadata fields from Crossref, removing redundant information, and standardizing entry formats.
 
 ## The Problem
 
@@ -25,7 +25,7 @@ This script resolves these issues by:
 - ✅ **DOI Conflict Resolution**: Warns about and intelligently resolves DOI conflicts
 - ✅ **Issue Identification**: Saves problematic entries to a separate file for easy review
 
-## Run on colab
+## Run on colab (Recommended)
 https://colab.research.google.com/drive/1UaIh96xLRa1Oe1pIdOAVAHslTyHgcRIJ?usp=sharing
 
 ## Requirements
